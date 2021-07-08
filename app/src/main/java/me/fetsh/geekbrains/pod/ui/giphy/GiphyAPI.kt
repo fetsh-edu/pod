@@ -8,5 +8,8 @@ const val GIPHY_API_KEY = "sW1sd9Si3Mz4YAMUomDNCmJu5YHsLHW1"
 
 interface GiphyAPI {
     @GET("gifs/random")
-    fun getRandomGif(@Query("api_key") apiKey: String): Call<GiphyResponseData>
+    fun getRandomGif(
+        @Query("api_key") apiKey: String,
+        @Query("tag") tag: String = "bummer",
+    ): Call<GiphyResponseData>
 }

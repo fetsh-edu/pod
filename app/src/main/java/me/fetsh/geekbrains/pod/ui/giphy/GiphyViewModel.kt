@@ -14,12 +14,10 @@ class GiphyViewModel(
 ) :
     ViewModel() {
 
-    fun getData(): LiveData<GiphyData> {
-        sendServerRequest()
-        return liveDataForViewToObserve
-    }
+    val liveData : LiveData<GiphyData>
+        get() { return liveDataForViewToObserve }
 
-    private fun sendServerRequest() {
+    fun sendServerRequest(tag: String = "bummer") {
         liveDataForViewToObserve.value = GiphyData.Loading(null)
 
         retrofitImpl.getRetrofitImpl().getRandomGif(GIPHY_API_KEY).enqueue(object :
@@ -29,7 +27,6 @@ class GiphyViewModel(
                 response: Response<GiphyResponseData>
             ) {
                 if (response.isSuccessful && response.body() != null) {
-                    Log.d("AAA", response.toString())
                     liveDataForViewToObserve.value =
                         GiphyData.Success(response.body()!!)
                 } else {

@@ -36,7 +36,8 @@ class GiphyFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel.getData().observe(viewLifecycleOwner, { renderData(it) })
+        viewModel.sendServerRequest()
+        viewModel.liveData.observe(viewLifecycleOwner, { renderData(it) })
     }
 
     private fun renderData(data: GiphyData) {
