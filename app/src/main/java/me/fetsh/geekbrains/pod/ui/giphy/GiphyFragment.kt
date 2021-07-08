@@ -1,17 +1,24 @@
 package me.fetsh.geekbrains.pod.ui.giphy
 
-import androidx.lifecycle.ViewModelProvider
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.core.content.ContextCompat.getSystemService
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import coil.load
+import me.fetsh.geekbrains.pod.MainActivity
 import me.fetsh.geekbrains.pod.R
+import me.fetsh.geekbrains.pod.closeKeyboard
 import me.fetsh.geekbrains.pod.databinding.GiphyFragmentBinding
+
 
 class GiphyFragment : Fragment() {
 
@@ -44,6 +51,7 @@ class GiphyFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.inputLayout.setEndIconOnClickListener {
             viewModel.sendServerRequest(tag = binding.inputEditText.text.toString())
+            activity?.closeKeyboard()
         }
     }
 

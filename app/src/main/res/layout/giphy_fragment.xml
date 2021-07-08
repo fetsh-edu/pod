@@ -11,7 +11,6 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         app:endIconMode="custom"
         app:endIconDrawable="@drawable/ic_giphy_seeklogo_com"
-        app:endIconCheckable="true"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="@string/search_gif"
@@ -33,6 +32,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/input_layout"
         android:scaleType="fitCenter"
         android:contentDescription="@string/photo_of_the_day_stub"
         app:srcCompat="@drawable/ic_no_photo_vector" />

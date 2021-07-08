@@ -20,7 +20,10 @@ class GiphyViewModel(
     fun sendServerRequest(tag: String = "bummer") {
         liveDataForViewToObserve.value = GiphyData.Loading(null)
 
-        retrofitImpl.getRetrofitImpl().getRandomGif(GIPHY_API_KEY).enqueue(object :
+        retrofitImpl.getRetrofitImpl().getRandomGif(
+            apiKey = GIPHY_API_KEY,
+            tag = tag
+        ).enqueue(object :
             Callback<GiphyResponseData> {
             override fun onResponse(
                 call: Call<GiphyResponseData>,
