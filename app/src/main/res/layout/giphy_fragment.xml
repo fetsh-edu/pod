@@ -1,9 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:endIconMode="custom"
+        app:endIconDrawable="@drawable/ic_giphy_seeklogo_com"
+        app:endIconCheckable="true"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/search_gif"
+        app:counterEnabled="true"
+        app:counterMaxLength="20"
+        app:helperText="@string/giphy_helper_text"
+        app:layout_constraintBottom_toTopOf="@+id/giphyView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <ImageView
         android:id="@+id/giphyView"
@@ -13,4 +36,4 @@
         android:scaleType="fitCenter"
         android:contentDescription="@string/photo_of_the_day_stub"
         app:srcCompat="@drawable/ic_no_photo_vector" />
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

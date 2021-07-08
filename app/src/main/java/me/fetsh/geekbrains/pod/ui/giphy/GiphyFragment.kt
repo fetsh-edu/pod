@@ -40,6 +40,13 @@ class GiphyFragment : Fragment() {
         viewModel.liveData.observe(viewLifecycleOwner, { renderData(it) })
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.inputLayout.setEndIconOnClickListener {
+            viewModel.sendServerRequest(tag = binding.inputEditText.text.toString())
+        }
+    }
+
     private fun renderData(data: GiphyData) {
         when (data) {
             is GiphyData.Success -> {
