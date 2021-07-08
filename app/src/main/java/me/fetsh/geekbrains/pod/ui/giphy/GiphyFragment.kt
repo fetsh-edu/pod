@@ -60,7 +60,6 @@ class GiphyFragment : Fragment() {
             is GiphyData.Success -> {
                 val serverResponseData = data.serverResponseData
                 val url = serverResponseData.gif
-                Log.d("GIF", serverResponseData.gif!!)
                 if (url.isNullOrEmpty()) {
                     toast("Link is empty")
                 } else {
@@ -69,6 +68,7 @@ class GiphyFragment : Fragment() {
                         error(R.drawable.ic_load_error_vector)
                         placeholder(R.drawable.ic_no_photo_vector)
                     }
+                    binding.giphyTitle.text = serverResponseData.data?.title
                 }
             }
             is GiphyData.Loading -> {
