@@ -9,7 +9,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class GiphyViewModel(
-    private val liveDataForViewToObserve: MutableLiveData<GiphyData> = MutableLiveData(),
+    private val liveDataForViewToObserve: MutableLiveData<GiphyData> = MutableLiveData(GiphyData.NotAsked),
     private val retrofitImpl: GiphyRetrofit = GiphyRetrofit()
 ) :
     ViewModel() {
@@ -17,7 +17,7 @@ class GiphyViewModel(
     val liveData : LiveData<GiphyData>
         get() { return liveDataForViewToObserve }
 
-    fun sendServerRequest(tag: String = "bummer") {
+    fun sendServerRequest(tag: String = "party hard") {
         liveDataForViewToObserve.value = GiphyData.Loading(null)
 
         retrofitImpl.getRetrofitImpl().getRandomGif(
