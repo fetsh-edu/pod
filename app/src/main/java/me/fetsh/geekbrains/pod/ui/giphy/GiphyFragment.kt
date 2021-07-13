@@ -41,6 +41,36 @@ class GiphyFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.bottomNavigationView.setOnItemSelectedListener(listener)
+        binding.bottomNavigationView.selectedItemId = R.id.bottom_view_cat
+        binding.bottomNavigationView.setOnItemReselectedListener { item ->
+            listener.invoke(item)
+        }
+    }
+
+    private val listener = { item : MenuItem ->
+        when(item.itemId) {
+            R.id.bottom_view_cat -> {
+                viewModel.sendServerRequest(tag = getString(R.string.Cat))
+                true
+            }
+            R.id.bottom_view_dog -> {
+                viewModel.sendServerRequest(tag = getString(R.string.Dog))
+                true
+            }
+            R.id.bottom_view_bomb -> {
+                viewModel.sendServerRequest(tag = getString(R.string.Bang))
+                true
+            }
+            else -> {
+                viewModel.sendServerRequest(tag = getString(R.string.Cat))
+                true
+            }
+        }
+    }
+
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.toolbar, menu);
