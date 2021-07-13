@@ -3,4 +3,9 @@
     <string name="photo_of_the_day_stub">Photo of the day</string>
     <string name="search_gif">Get random GIF</string>
     <string name="giphy_helper_text">Search GIPHY</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="nav_header_title">Giphy Random</string>
+    <string name="menu_home">Giphy random GIF</string>
+    <string name="menu_about">Fake menu item</string>
+    <string name="search">Search random GIF</string>
 </resources>

@@ -9,7 +9,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class GiphyViewModel(
-    private val liveDataForViewToObserve: MutableLiveData<GiphyData> = MutableLiveData(),
+    private val liveDataForViewToObserve: MutableLiveData<GiphyData> = MutableLiveData(GiphyData.NotAsked),
     private val retrofitImpl: GiphyRetrofit = GiphyRetrofit()
 ) :
     ViewModel() {
