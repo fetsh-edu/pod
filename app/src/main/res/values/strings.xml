@@ -8,4 +8,7 @@
     <string name="menu_home">Giphy random GIF</string>
     <string name="menu_about">Fake menu item</string>
     <string name="search">Search random GIF</string>
+    <string name="settings">Settings</string>
+    <string name="change_theme">Change</string>
+    <string name="theme">Theme</string>
 </resources>
