@@ -1,6 +1,7 @@
 package me.fetsh.geekbrains.pod.ui.giphy
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
@@ -30,15 +31,42 @@ class GiphyFragment : Fragment() {
 
         setHasOptionsMenu(true)
 
-        when (viewModel.liveData.value) {
-            is GiphyData.NotAsked -> {
-                viewModel.sendServerRequest()
-            }
-            else -> {}
+        if (viewModel.liveData.value is GiphyData.NotAsked) {
+            Log.d("Why", "WTF")
+            viewModel.sendServerRequest()
         }
         viewModel.liveData.observe(viewLifecycleOwner, { renderData(it) })
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.bottomNavigationView.setOnItemSelectedListener(listener)
+        binding.bottomNavigationView.setOnItemReselectedListener { item ->
+            listener.invoke(item)
+        }
+    }
+
+    private val listener = { item : MenuItem ->
+        when(item.itemId) {
+            R.id.bottom_view_cat -> {
+                viewModel.sendServerRequest(tag = getString(R.string.Cat))
+                true
+            }
+            R.id.bottom_view_dog -> {
+                viewModel.sendServerRequest(tag = getString(R.string.Dog))
+                true
+            }
+            R.id.bottom_view_bomb -> {
+                viewModel.sendServerRequest(tag = getString(R.string.Bang))
+                true
+            }
+            else -> {
+                viewModel.sendServerRequest(tag = getString(R.string.Cat))
+                true
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

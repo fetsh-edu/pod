@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/bottom_view_cat"
+        android:icon="@drawable/ic_cat_line_art_pitr_kitty_icon"
+        android:title="@string/Cat" />
+
+    <item
+        android:id="@+id/bottom_view_dog"
+        android:icon="@drawable/ic_dog"
+        android:title="@string/Dog" />
+
+    <item
+        android:id="@+id/bottom_view_bomb"
+        android:icon="@drawable/ic_bomb"
+        android:title="@string/Bang" />
+</menu>
