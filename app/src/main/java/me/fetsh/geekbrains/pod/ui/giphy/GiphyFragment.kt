@@ -1,6 +1,7 @@
 package me.fetsh.geekbrains.pod.ui.giphy
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
@@ -30,11 +31,9 @@ class GiphyFragment : Fragment() {
 
         setHasOptionsMenu(true)
 
-        when (viewModel.liveData.value) {
-            is GiphyData.NotAsked -> {
-                viewModel.sendServerRequest()
-            }
-            else -> {}
+        if (viewModel.liveData.value is GiphyData.NotAsked) {
+            Log.d("Why", "WTF")
+            viewModel.sendServerRequest()
         }
         viewModel.liveData.observe(viewLifecycleOwner, { renderData(it) })
 
@@ -44,7 +43,6 @@ class GiphyFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.bottomNavigationView.setOnItemSelectedListener(listener)
-        binding.bottomNavigationView.selectedItemId = R.id.bottom_view_cat
         binding.bottomNavigationView.setOnItemReselectedListener { item ->
             listener.invoke(item)
         }
