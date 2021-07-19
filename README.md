@@ -1,2 +1,2 @@
 # pod
-Picture of the day
+Picture of the day.
