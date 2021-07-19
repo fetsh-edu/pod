@@ -1,4 +1,2 @@
 # pod
-Picture of the day
-\n\n## HW1
-\n\n## HW2
+Picture of the day.

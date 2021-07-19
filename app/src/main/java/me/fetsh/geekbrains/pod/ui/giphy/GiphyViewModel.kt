@@ -17,7 +17,7 @@ class GiphyViewModel(
     val liveData : LiveData<GiphyData>
         get() { return liveDataForViewToObserve }
 
-    fun sendServerRequest(tag: String = "bummer") {
+    fun sendServerRequest(tag: String = "cat") {
         liveDataForViewToObserve.value = GiphyData.Loading(null)
 
         retrofitImpl.getRetrofitImpl().getRandomGif(
