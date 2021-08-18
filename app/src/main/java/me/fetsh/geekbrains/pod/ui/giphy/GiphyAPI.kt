@@ -10,6 +10,6 @@ interface GiphyAPI {
     @GET("gifs/random")
     fun getRandomGif(
         @Query("api_key") apiKey: String,
-        @Query("tag") tag: String = "bummer",
+        @Query("tag") tag: String = "cat",
     ): Call<GiphyResponseData>
 }
